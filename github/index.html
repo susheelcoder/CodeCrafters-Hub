@@ -34,7 +34,7 @@
                 <td>1</td>
                 <td>project-2025</td>
                 <td><a class="live" href="https://live-project-2025.netlify.app/">live</a></td>
-                <td>2025</td>
+                <td id="liveTime"></td>
                 <td><a href="https://github.com/susheelcoder/project-2025">GitHub</a></td>
             </tr>
             <tr>
@@ -47,7 +47,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="5"><strong>Total </strong></td>
+                <td colspan="5">Last Updated: <i id="lastUpdate"></i></td>
             </tr>
         </tfoot>
     </table>
@@ -249,3 +249,102 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ///////////////////////////////////////////// -->
+
+ <!-- <p>Last Updated: <span id="lastUpdate"></span></p> -->
+
+<script>
+  // page ka last modified date nikalna
+  const lastModified = document.lastModified;
+
+  // readable format me convert karna
+  const date = new Date(lastModified);
+  const formattedDate = date.toLocaleDateString('en-GB', {
+    day: '2-digit', month: '2-digit', year: 'numeric'
+  }) + ' ' + date.toLocaleTimeString();
+
+  // page me dikhana
+  document.getElementById("lastUpdate").textContent = formattedDate;
+</script>
+
+
+<!-- ////////////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <td id="liveTime"></td> -->
+<script>
+  function updateTime() {
+    const now = new Date();
+    // Format: DD-MM-YYYY
+    const formatted = now.toLocaleString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    });
+    document.getElementById('liveTime').textContent = formatted;
+  }
+  
+
+  updateTime();             
+  setInterval(updateTime, 1000); 
+</script>
+
+
+
+<script>
+  function updateTime() {
+    const now = new Date();
+    // Format: HH:MM:SS
+    const formatted = now.toLocaleString('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    document.getElementById('liveTimes').textContent = formatted;
+  }
+
+  updateTime();              // पहला call
+  setInterval(updateTime, 1000); // हर 1 सेकंड में update
+</script>
+
+
+
+
+<!--  -->
